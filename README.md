@@ -38,12 +38,12 @@ jobs:
           fetch-depth: 0
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v19
+        uses: SkyHighGrowth/gha-changed-files@v1.0.1
         with:
           separator: ","
           quotepath: "false"
       - name: Upload files
-        uses: mohitnayar123/power-bi-utils@v1.0.3 # Replace this with the latest version
+        uses: SkyHighGrowth/gha-powerbi-utils@v1.0.1 # Replace this with the latest version
         with:
           files: ${{ steps.changed-files.outputs.all_modified_files }}
         env:
