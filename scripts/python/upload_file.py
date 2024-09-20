@@ -109,9 +109,10 @@ def main():
         file_name_without_extension = os.path.splitext(file_name)[0]
         file_location = os.getcwd() + "/" + file_name
         print("-----------------------------------------------------")
-        print(file_name)
-        print(file_extension)
-        print(file_location)
+        print("FILE_NAME: ", file_name)
+        print("FILE_EXTENSION: ", file_extension)
+        print("FILE_LOCATION: ", file_location)
+        print("FILE_NAME_ARRAY: ", file_name_array)
         print("-----------------------------------------------------")
         if os.path.getsize(file_location) / (1024 * 1024) < max_file_size_supported_in_mb and file_extension in [".pbip"]:
             open_file = open(file_location, "rb")
