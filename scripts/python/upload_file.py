@@ -109,7 +109,7 @@ def main():
         file_name_without_extension = os.path.splitext(file_name)[0]
         file_location = os.getcwd() + "/" + file_name
 
-        if os.path.getsize(file_location) / (1024 * 1024) < max_file_size_supported_in_mb and file_extension in [".pbip", ".rdl"]:
+        if os.path.getsize(file_location) / (1024 * 1024) < max_file_size_supported_in_mb and file_extension in [".pbip"]:
             open_file = open(file_location, "rb")
             workspace_id = config["deploy_location"]["workspace_id"]
 
@@ -119,9 +119,9 @@ def main():
             if file_extension == ".pbip":
                 url = f"https://api.powerbi.com/v1.0/myorg/groups/{workspace_id}/imports?datasetDisplayName={file_name_without_extension}" + \
                     get_pbix_deploy_options()
-            elif file_extension == ".rdl":
-                url = f"https://api.powerbi.com/v1.0/myorg/groups/{workspace_id}/imports?datasetDisplayName={file_name_without_extension}" + \
-                    get_rdl_deploy_options()
+            #elif file_extension == ".rdl":
+            #    url = f"https://api.powerbi.com/v1.0/myorg/groups/{workspace_id}/imports?datasetDisplayName={file_name_without_extension}" + \
+            #        get_rdl_deploy_options()
 
             response = requests.request("POST", url, headers=headers, files=file)
             if response.status_code in [200, 202]:
@@ -130,7 +130,7 @@ def main():
             else:
                 print(f"ERROR: {response.status_code}: {response.content}\nURL: {response.url}")
 
-        elif not file_extension in [".pbip", ".rdl"]:
+        elif not file_extension in [".pbip"]:
                 print("File type not supported")
         else:
                 print("File Size over 1024 MB")
