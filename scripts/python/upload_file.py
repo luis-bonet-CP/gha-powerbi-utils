@@ -117,7 +117,7 @@ def main():
             file = {'file': open_file}
 
             if file_extension == ".pbip":
-                url = f"https://api.powerbi.com/v1.0/myorg/groups/{workspace_id}/imports?datasetDisplayName={file_name_without_extension}" + \
+                url = f"https://app.powerbi.com/groups/{workspace_id}/imports?datasetDisplayName={file_name_without_extension}" + \
                     get_pbix_deploy_options()
             #elif file_extension == ".rdl":
             #    url = f"https://api.powerbi.com/v1.0/myorg/groups/{workspace_id}/imports?datasetDisplayName={file_name_without_extension}" + \
