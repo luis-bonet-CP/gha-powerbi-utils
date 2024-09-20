@@ -108,7 +108,11 @@ def main():
         file_extension = os.path.splitext(file_name)[1].lower()
         file_name_without_extension = os.path.splitext(file_name)[0]
         file_location = os.getcwd() + "/" + file_name
-
+        print("-----------------------------------------------------")
+        print(file_name)
+        print(file_extension)
+        print(file_location)
+        print("-----------------------------------------------------")
         if os.path.getsize(file_location) / (1024 * 1024) < max_file_size_supported_in_mb and file_extension in [".pbip"]:
             open_file = open(file_location, "rb")
             workspace_id = config["deploy_location"]["workspace_id"]
